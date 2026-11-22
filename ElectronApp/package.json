@@ -1,0 +1,66 @@
+{
+  "name": "KavyaShift",
+  "version": "1.0.0",
+  "description": "Employee activity monitoring Desktop app",
+  "main": "main.js",
+  "type": "module",
+  "author": "Karan Rajput <k4karanrajput@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ClassyKaran/KavyaShift_ExeFile.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "rebuild": "electron-rebuild -f -w sharp,active-win,uiohook-napi,screenshot-desktop"
+  },
+  "devDependencies": {
+    "electron": "^39.7.0",
+    "electron-builder": "^26.8.1"
+  },
+  "dependencies": {
+    "active-win": "^7.0.0",
+    "auto-launch": "^5.0.6",
+    "axios": "^1.13.6",
+    "dotenv": "^16.3.1",
+    "screenshot-desktop": "^1.15.0",
+    "sharp": "^0.34.5",
+    "socket.io-client": "^4.8.3",
+    "uiohook-napi": "^1.5.4",
+    "update-electron-app": "^3.1.2"
+  },
+  "build": {
+    "appId": "com.kavyashift",
+    "productName": "KavyaShift",
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "Assets/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": ".env",
+        "to": ".env"
+      }
+    ],
+    "asar": false,
+    "directories": {
+      "buildResources": "Assets"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ]
+  }
+}
